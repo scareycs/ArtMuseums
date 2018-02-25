@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" name="description" content="THis website is used to find art galleries near you!">
+    <meta name="viewport" content="width=device-width">
+	<title>Art Museums</title>
+    <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header role="banner">
+		<h2> Art Museum Search </h2>
+	</header>
+<main role="main">
+	<form class="artForm">
+		<label for="ZipCode">Please Enter Your Zipcode: </label>
+		<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="Zip Code: 00000">
+	</form>
+
+	<div class="container">
+		<div id="map">
+			
+		</div>
+	</div>
+	
+</main>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&callback=initMap&libraries=places">
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>
