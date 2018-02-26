@@ -17,4 +17,4 @@ function initMap() {
     position: longlat2,
     map:map
   })
-  }
+ }
