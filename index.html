@@ -11,24 +11,22 @@
     <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div class="initContainer">
 	<header role="banner">
 		<h2> Art Museum Search </h2>
 	</header>
+
 <main role="main">
 	<form class="artForm">
 		<label for="ZipCode">Please Enter Your Zipcode: </label>
 		<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="Zip Code: 00000">
+		<input type="submit" value="Submit">
 	</form>
 
-	<div class="container">
-		<div id="map">
-			
-		</div>
-	</div>
+</main>
 	
 </main>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&callback=initMap&libraries=places">
-</script>
+
 <script src="index.js"></script>
 
 </body>

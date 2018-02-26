@@ -1,8 +1,16 @@
- #map {
-        width: 100%;
-        height: 400px;
-        padding: 100px;
-      }
+body{
+	margin-left: auto;
+    margin-right: auto;
+    
+
+}
+.initContainer{
+	margin-top: 270px;
+}
+
+h2, .artForm{
+	text-align: center;
+}
 
  #ZipCode{
  	length: 200px;
@@ -10,3 +18,4 @@
  .artForm{
  	
  }
+
