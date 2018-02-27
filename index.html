@@ -9,23 +9,42 @@
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
     <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="fluid.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 	<header role="banner">
-		<h2> Art Museum Search </h2>
-			<form class="artForm">
-		<label for="ZipCode">Please Enter Your Zipcode: </label>
-		<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="Zip Code: 00000">
-	</form>
+		<div class="row">
+			<div class="col-12">
+				<h2> Art Museum Search </h2>
+				<form class="artForm">
+					<label for="ZipCode">Please Enter Your Zipcode: </label>
+					<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="Zip Code: 00000">
+				</form>
+			</div>
+		</div>
 	</header>
 <main role="main">
+	<div class="row">
+		<div class="col-6">
+			Results Title Here
 
+		</div>
 
+		<div class="col-6">
+			Map Title?
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			Results Go Here
 
-	<div class="container">
-		<div id="map">
-			
+		</div>
+
+		<div class="col-6">
+			<div id="map">
+				
+			</div>
 		</div>
 	</div>
 	
