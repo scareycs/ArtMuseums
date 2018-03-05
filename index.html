@@ -15,9 +15,10 @@
 		<h2> Art Museum Search </h2>
 	</header>
 <main role="main">
-	<form class="artForm">
+	<form class="zipcodeForm">
 		<label for="ZipCode">Please Enter Your Zipcode: </label>
 		<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="Zip Code: 00000">
+		<button type="submit" id="ZipCodeButton">Submit</button>
 	</form>
 
 	<div class="container">
@@ -27,7 +28,7 @@
 	</div>
 	
 </main>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&callback=initMap&libraries=places">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&libraries=places&callback=initMap">
 </script>
 <script src="index.js"></script>
 
