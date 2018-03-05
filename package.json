@@ -1,0 +1,25 @@
+{
+  "name": "artmuseums",
+  "version": "1.0.0",
+  "description": "Look up art museums with Google Maps API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scareycs/ArtMuseums.git"
+  },
+  "keywords": [
+    "Art"
+  ],
+  "author": "Shawna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scareycs/ArtMuseums/issues"
+  },
+  "homepage": "https://github.com/scareycs/ArtMuseums#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
