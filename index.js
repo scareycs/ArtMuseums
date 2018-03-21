@@ -4,15 +4,13 @@ function initMap() {
 
   geocoder = new google.maps.Geocoder();
   let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 12,
         center: {lat: 40.731, lng: -73.997}
     });
-
 
   $(".zipcodeForm").submit("click", function(event){
     event.preventDefault();
     let zipcode = $("#ZipCode").val();
-    //console.log(zipcode);
     geocoder.geocode({
       componentRestrictions: {
         country: 'US',
@@ -30,28 +28,43 @@ function initMap() {
           type: ['museum'],
           keyword: ['art']};
         let service = new google.maps.places.PlacesService(map);
-
         service.nearbySearch(request, callback);
-
+        let mapTitle = results[0].formatted_address;
         function callback(results, status){
-           if (status == google.maps.places.PlacesServiceStatus.OK) {
-              for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-                });
-                console.log(results[i]);
-              }
-            }   
-        }
-        
-
-      } else {
-        window.alert('Geocode was not successful for the following reason: ' + status);
+          let place;
+          let marker;
+           if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
+            $('.mapTitle').html(`Showing Art Museums in ${mapTitle}`);
+                $('.resultsTitle').html(`You have ${results.length} Results`);
+                $('.listItems').html(`<ul>`);
+                  for (let i = 0; i < results.length; i++) {
+                    place = results[i];
+                    marker = new google.maps.Marker({
+                      map: map,
+                      position: place.geometry.location,
+                      title: place.name
+                    });
+                    displayList(place);
+                  }
+                $('.listItems').append(`</ul>`);
+            }
+           else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
+                $('.resultsTitle').html(`There are no art museums listed in this zip code.`);
+                $('.listItems').html(``);
+                $('.mapTitle').html(``);
+            }
+        }   
       }
- 
+      else {
+        $('.listItems').html(``);
+        $('.mapTitle').html(``);
+        $('.resultsTitle').html(`Not a valid zipcode. Be sure to enter a valid zipcode`);//if zipcode is not valid
+      }
     });
-
   });
+
+  function displayList(listItem)
+  {
+      $('.listItems').append(`<li>Name: ${listItem.name} - Address: ${listItem.vicinity}</li>`);
+  }
 }
