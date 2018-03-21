@@ -1,7 +1,7 @@
 let geocoder;
 
 function initMap() {
-
+  $("#map").hide();
   geocoder = new google.maps.Geocoder();
   let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -34,6 +34,7 @@ function initMap() {
           let place;
           let marker;
            if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
+            $("#map").show();
             $('.mapTitle').html(`Showing Art Museums in ${mapTitle}`);
                 $('.resultsTitle').html(`You have ${results.length} Results`);
                 $('.listItems').html(`<ul>`);
@@ -49,6 +50,7 @@ function initMap() {
                 $('.listItems').append(`</ul>`);
             }
            else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
+                $("#map").hide();
                 $('.resultsTitle').html(`There are no art museums listed in this zip code.`);
                 $('.listItems').html(``);
                 $('.mapTitle').html(``);
@@ -56,6 +58,7 @@ function initMap() {
         }   
       }
       else {
+        $("#map").hide();
         $('.listItems').html(``);
         $('.mapTitle').html(``);
         $('.resultsTitle').html(`Not a valid zipcode. Be sure to enter a valid zipcode`);//if zipcode is not valid
