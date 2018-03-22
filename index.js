@@ -10,6 +10,7 @@ function initMap() {
 
   $(".zipcodeForm").submit("click", function(event){
     event.preventDefault();
+    $(".intro").hide();
     let zipcode = $("#ZipCode").val();
     geocoder.geocode({
       componentRestrictions: {
@@ -31,20 +32,32 @@ function initMap() {
         service.nearbySearch(request, callback);
         let mapTitle = results[0].formatted_address;
         function callback(results, status){
-          let place;
-          let marker;
            if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
             $("#map").show();
             $('.mapTitle').html(`Showing Art Museums in ${mapTitle}`);
                 $('.resultsTitle').html(`You have ${results.length} Results`);
                 $('.listItems').html(`<ul>`);
                   for (let i = 0; i < results.length; i++) {
-                    place = results[i];
-                    marker = new google.maps.Marker({
+                    let infoWindows = [];
+                    let place = results[i];
+                    let content = `<p>Title: ${place.name} </p> <p>Open?: ${place.opening_hours.open_now}</p>`;
+                    let marker = new google.maps.Marker({
                       map: map,
                       position: place.geometry.location,
                       title: place.name
                     });
+                    let infowindow = new google.maps.InfoWindow();
+                    infoWindows.push(infowindow);
+                    google.maps.event.addListener(marker,'click', (function(marker,content,infowindow, infoWindows){ 
+                      return function() {
+                        for (var i=0;i<infoWindows.length;i++) {
+                           infoWindows[i].close();
+                        }
+                        infowindow.setContent(content);
+                        infowindow.open(map,marker);
+                      }
+                    })(marker,content,infowindow, infoWindows)); 
+                    //uponClick();
                     displayList(place);
                   }
                 $('.listItems').append(`</ul>`);
@@ -54,6 +67,11 @@ function initMap() {
                 $('.resultsTitle').html(`There are no art museums listed in this zip code.`);
                 $('.listItems').html(``);
                 $('.mapTitle').html(``);
+            }
+            function closeAllInfoWindows() {
+              for (var i=0;i<infoWindows.length;i++) {
+                 infoWindows[i].close();
+              }
             }
         }   
       }
@@ -70,4 +88,6 @@ function initMap() {
   {
       $('.listItems').append(`<li>Name: ${listItem.name} - Address: ${listItem.vicinity}</li>`);
   }
+
+
 }
