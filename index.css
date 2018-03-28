@@ -2,8 +2,34 @@
         width: 100%;
         height: 400px;
         padding: 100px;
+        margin-top: 17px;
       }
 
  #ZipCode{
  	length: 200px;
  }
+
+.resultsTitle, .mapTitle{
+	text-align: center;
+}
+
+.inLine{
+	display:inline-block;
+	float: left;
+}
+
+.appTitle {
+	background: lightblue;
+}
+
+li {
+	list-style-type: none;
+	border: 1px solid blue;
+}
+
+.listName
+{
+	text-decoration: bold;
+}
+
+
