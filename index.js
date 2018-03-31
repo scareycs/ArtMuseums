@@ -3,17 +3,21 @@ function initMap() {
   $("#map").hide();
   geocoder = new google.maps.Geocoder();
   let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 13,
         center: {lat: 40.731, lng: -73.997}
     });
-  $(".zipcodeForm").submit("click", function(event){
+  $(".zipCodeForm").submit("click", function(event){
     event.preventDefault();
     $(".intro").hide();
-    let zipcode = $("#ZipCode").val();
+    $(".appTitle").hide();
+    $(".zipHeading").removeClass("zipHeading").addClass("appTitle2");
+    $("#zipLabel").addClass("zipLabel").html("Art Museum Search");
+    $("#enterLabel").html("Zip Code");
+    let zipCode = $("#zipCode").val();
     geocoder.geocode({
       componentRestrictions: {
         country: 'US',
-        postalCode: zipcode
+        postalCode: zipCode
       }
     }, function(results, status) {
       if (status == 'OK') {
@@ -29,20 +33,22 @@ function initMap() {
         let service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, callback);
         let mapTitle = results[0].formatted_address;
+
         function callback(results, status){
           if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
             const infoWindowsContent = [];
             let infoWindow = new google.maps.InfoWindow();
             $("#map").show();
             $('.mapTitle').html(`Showing Art Museums in ${mapTitle}`);
-            $('.resultsTitle').html(`You have ${results.length} Results`);
+            $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
             $('.listItems').html(`<ul>`);
 
             results.forEach(place => {
-              let name = `<p>Title: ${place.name} </p>`;
+              let name = `<div class="listName">${place.name}</div>`;
               let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
-                `<p>Open?: ${place.opening_hours.open_now}</p>` : '';
-              let content = `${name} ${openingHours}`;
+                `<div class="openNow">Open Now! </div>`: '';
+              let ratings = (place.rating && place.rating !== undefined) ? `Rating: ${place.rating}`:'';
+              let content = `${name} ${ratings} ${openingHours}`;
               infoWindowsContent.push(content);
             });
 
@@ -83,12 +89,24 @@ function initMap() {
       }
     });
   });
+
   function displayList(listItem)
-  { 
-      //let preImage = "https://maps.googleapis.com/maps/api/place/photo?parameters";
-      $('.listItems').append(`<li><img src=""alt=""><div class="listName">
-        <p> ${listItem.name}</p>
-        </div> <p> Address: ${listItem.vicinity}</p><p>Open?</p>
-        <p>Rating: ${listItem.rating}</p></li>`);
+  {   
+    const photoUrl = listItem.photos && listItem.photos.length > 0 && listItem.photos[0].getUrl({maxWidth: 1000});
+    const imgNode = (photoUrl === undefined) ? '' : `<img src="${photoUrl}" alt="${listItem.name}">`;
+    const Hours = (listItem.opening_hours && listItem.opening_hours.open_now !== undefined) ?
+                `<div class="openNow">Open Now! </div>`: '';
+
+    $('.listItems').append(`
+      <li>
+        ${imgNode}
+        <div class="listName">
+          <p> ${listItem.name}</p>
+        </div>
+        <p>${listItem.vicinity}</p>
+        <p>${Hours}</p>
+        <p>Rating: ${listItem.rating}</p>
+      </li>`
+    );
   }
 }

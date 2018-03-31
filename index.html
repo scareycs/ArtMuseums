@@ -4,30 +4,32 @@
 	<meta charset="utf-8" name="description" content="THis website is used to find art galleries near you!">
     <meta name="viewport" content="width=device-width">
 	<title>Art Museums</title>
+	 <!-- fonts  -->
     <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="fluid.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Nanum+Gothic" rel="stylesheet">
+
 </head>
 <body>
 
 	<header role="banner">
-		<div class="row">
-			<div class="col-12">
-
-				<div class="inLine"> <div class="appTitle">Art Museum Search </div>
-					<div class="intro"><p>Looking for art museums near you? This application allows you to check the location of art museums near you. You can take a look at the locations and see whether are not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.</p> <p> You can start your search for local art museums below.</p>
-					</div>
-					<form class="zipcodeForm">
-						<label for="ZipCode">Please Enter Your Zipcode: </label>
-						<input id="ZipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="00000">
-						<button type="submit" id="ZipCodeButton">Submit</button>
-					</form>
-				</div>
-			</div>
+		<div class="appTitle">Art Museum Search</div>
+		<div class="intro"><p>Looking for art museums near you?</p> <p>This application allows you to check the location of art museums near you. You can take a look at the locations and see whether are not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.</p> <p> You can start your search for local art museums below.</p>
 		</div>
+		
+			<div class="zipHeading">
+					<form class="zipCodeForm" >
+						<label id="zipLabel"></label>
+						<label for="ZipCode" id="enterLabel">Please Enter Your Zip Code: </label>
+						<input id="zipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="00000">
+						<button type="submit" id="zipCodeButton">Submit</button>
+					</form>
+			</div>
+	
 	</header>
 <main role="main">
 
