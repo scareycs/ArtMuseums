@@ -99,13 +99,17 @@ function initMap() {
 
     $('.listItems').append(`
       <li>
-        ${imgNode}
-        <div class="listName">
-          <p> ${listItem.name}</p>
+        <div class="row">
+          <div class="col-6">${imgNode}</div>
+          <div class="col-6">
+            <div class="listName">
+              <p> ${listItem.name}</p>
+            </div>
+            <p>${listItem.vicinity}</p>
+            <p>${Hours}</p>
+            <p>Rating: ${listItem.rating}</p>
+          </div>
         </div>
-        <p>${listItem.vicinity}</p>
-        <p>${Hours}</p>
-        <p>Rating: ${listItem.rating}</p>
       </li>`
     );
   }

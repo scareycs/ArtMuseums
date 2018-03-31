@@ -17,19 +17,21 @@
 <body>
 
 	<header role="banner">
-		<div class="appTitle">Art Museum Search</div>
-		<div class="intro"><p>Looking for art museums near you?</p> <p>This application allows you to check the location of art museums near you. You can take a look at the locations and see whether are not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.</p> <p> You can start your search for local art museums below.</p>
+		<div class="row">
+			
+				<div class="appTitle">Art Museum Search</div>
+				<div class="intro"><p>Looking for art museums near you?</p> <p>This application allows you to check the location of art museums near you. You can take a look at the locations and see whether are not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.</p> <p> You can start your search for local art museums below.</p>
+				</div>
+				
+					<div class="zipHeading">
+							<form class="zipCodeForm" >
+								<label id="zipLabel"></label>
+								<label for="ZipCode" id="enterLabel">Please Enter Your Zip Code: </label>
+								<input id="zipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="00000">
+								<button type="submit" id="zipCodeButton">Submit</button>
+							</form>
+					</div>
 		</div>
-		
-			<div class="zipHeading">
-					<form class="zipCodeForm" >
-						<label id="zipLabel"></label>
-						<label for="ZipCode" id="enterLabel">Please Enter Your Zip Code: </label>
-						<input id="zipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="00000">
-						<button type="submit" id="zipCodeButton">Submit</button>
-					</form>
-			</div>
-	
 	</header>
 <main role="main">
 
