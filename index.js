@@ -11,7 +11,7 @@ function initMap() {
     $(".intro").hide();
     $(".appTitle").hide();
     $(".zipHeading").removeClass("zipHeading").addClass("appTitle2");
-    $("#zipLabel").addClass("zipLabel").html("Art Museum Search");
+    $("#zipLabel").addClass("zipLabel").html("Art Escape");
     $("#enterLabel").html("Zip Code");
     let zipCode = $("#zipCode").val();
     geocoder.geocode({
@@ -74,7 +74,7 @@ function initMap() {
 
           } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
             $("#map").hide();
-            $('.resultsTitle').html(`There are no art museums listed in this zip code.`);
+            $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`);
             $('.listItems').html(``);
             $('.mapTitle').html(``);
           }
@@ -85,7 +85,7 @@ function initMap() {
         $('.listItems').html(``);
         $('.mapTitle').html(``);
         //if zipcode is not valid
-        $('.resultsTitle').html(`Not a valid zipcode. Be sure to enter a valid zipcode`);
+        $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);
       }
     });
   });
@@ -96,7 +96,7 @@ function initMap() {
     const imgNode = (photoUrl === undefined) ? '' : `<img src="${photoUrl}" alt="${listItem.name}">`;
     const Hours = (listItem.opening_hours && listItem.opening_hours.open_now !== undefined) ?
                 `<div class="openNow">Open Now! </div>`: '';
-
+    const Ratings = (listItem.rating && listItem.rating !== undefined) ? `Rating: ${listItem.rating}`:'';
     $('.listItems').append(`
       <li>
         <div class="row">
@@ -114,3 +114,4 @@ function initMap() {
     );
   }
 }
+
