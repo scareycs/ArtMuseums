@@ -39,7 +39,7 @@ function initMap() {
             const infoWindowsContent = [];
             let infoWindow = new google.maps.InfoWindow();
             $("#map").show();
-            $('.mapTitle').html(`Showing Art Museums in ${mapTitle}`);
+            $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`);
             $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
             $('.listItems').html(`<ul>`);
 

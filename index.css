@@ -4,9 +4,11 @@ body{
 
 #map {
     width: 100%;
-    height: 600px;
+    height: 480px;
     padding: 100px;
     margin-top: 17px;
+    border: 2px solid #7F397F;
+	border-radius: 5px;
  }
 
  #ZipCode{
@@ -48,7 +50,8 @@ li:hover{
 	background: #D992D9;		
 }
 .listItems{
-	max-height:600px;
+	margin-top: 17px;
+	max-height:480px;
     overflow-y:auto;
 }
 
@@ -63,6 +66,10 @@ li:hover{
 #zipLabel,
 .openNow{
 	font-weight: bold;
+}
+
+.resultName, .resultNum{
+	color: #6E1D6E;
 }
 
 .listName{
@@ -95,6 +102,8 @@ li:hover{
 	max-height:200px;
 	max-width: 170px;
 	float: left;
+	border: 1px solid #7F397F;
+	border-radius: 9px;
 }
 
 #zipCodeButton:hover{
