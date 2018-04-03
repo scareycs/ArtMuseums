@@ -20,7 +20,12 @@ function initMap() {
         postalCode: zipCode
       }
     }, function(results, status) {
-      if (status == 'OK') {
+      handleGeocodeSubmit(results, status);
+      });
+  });
+
+      function handleGeocodeSubmit(results, status){
+        if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
         let lat = results[0].geometry.location.lat(); 
         let lng = results[0].geometry.location.lng();
@@ -31,55 +36,10 @@ function initMap() {
           type: ['museum'],
           keyword: ['art']};
         let service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
         let mapTitle = results[0].formatted_address;
-
-        function callback(results, status){
-          if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
-            const infoWindowsContent = [];
-            let infoWindow = new google.maps.InfoWindow();
-            $("#map").show();
-            $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`);
-            $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
-            $('.listItems').html(`<ul>`);
-
-            results.forEach(place => {
-              let name = `<div class="listName">${place.name}</div>`;
-              let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
-                `<div class="openNow">Open Now! </div>`: '';
-              let ratings = (place.rating && place.rating !== undefined) ? `Rating: ${place.rating}`:'';
-              let content = `${name} ${ratings} ${openingHours}`;
-              infoWindowsContent.push(content);
-            });
-
-            for (let i = 0; i < results.length; i++) {
-              let place = results[i];
-              let marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location,
-                title: place.name
-              });
-
-              google.maps.event.addListener(marker,'click', (function(marker){ 
-                return function() {
-                  infoWindow.setContent(infoWindowsContent[i]);
-                  infoWindow.open(map,marker);
-                }
-              })(marker));
-
-              displayList(place);
-            }
-
-            $('.listItems').append(`</ul>`);
-
-          } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
-            $("#map").hide();
-            $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`);
-            $('.listItems').html(``);
-            $('.mapTitle').html(``);
-          }
-        }
-
+        service.nearbySearch(request, function(results, status, mapTitle){
+          handleSearchResults(results, status, mapTitle);
+        }); 
       } else {
         $("#map").hide();
         $('.listItems').html(``);
@@ -87,8 +47,56 @@ function initMap() {
         //if zipcode is not valid
         $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);
       }
-    });
-  });
+    }
+
+  function handleSearchResults(results, status, mapTitle){
+      if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
+        const infoWindowsContent = [];
+        let infoWindow = new google.maps.InfoWindow();
+        $("#map").show();
+        $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`);
+        $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
+        $('.listItems').html(`<ul>`);
+
+        results.forEach(place => {
+          let name = `<div class="listName">${place.name}</div>`;
+          let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
+            `<div class="openNow">Open Now! </div>`: '';
+          let ratings = (place.rating && place.rating !== undefined) ? `Rating: ${place.rating}`:'';
+          let content = `${name} ${ratings} ${openingHours}`;
+          infoWindowsContent.push(content);
+        });
+        createMarkers(results, map);
+
+        $('.listItems').append(`</ul>`);
+
+      } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
+        $("#map").hide();
+        $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`);
+        $('.listItems').html(``);
+        $('.mapTitle').html(``);
+      }
+  }
+
+  function createMarkers(results, map){
+      for (let i = 0; i < results.length; i++) {
+        let place = results[i];
+        let marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          title: place.name
+        });
+
+        google.maps.event.addListener(marker,'click', (function(marker){ 
+          return function() {
+            infoWindow.setContent(infoWindowsContent[i]);
+            infoWindow.open(map,marker);
+          }
+        })(marker));
+
+        displayList(place);
+      }
+  }
 
   function displayList(listItem)
   {   
@@ -114,4 +122,3 @@ function initMap() {
     );
   }
 }
-
