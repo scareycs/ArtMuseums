@@ -24,40 +24,39 @@ function initMap() {
       });
   });
 
-      function handleGeocodeSubmit(results, status){
-        if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        let lat = results[0].geometry.location.lat(); 
-        let lng = results[0].geometry.location.lng();
-        let longlat = {lat: lat, lng: lng};
-        let request = {
-          location: longlat ,
-          radius:4000,
-          type: ['museum'],
-          keyword: ['art']};
-        let service = new google.maps.places.PlacesService(map);
-        let mapTitle = results[0].formatted_address;
-        service.nearbySearch(request, function(results, status, mapTitle){
-          handleSearchResults(results, status, mapTitle);
-        }); 
-      } else {
-        $("#map").hide();
-        $('.listItems').html(``);
-        $('.mapTitle').html(``);
-        //if zipcode is not valid
-        $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);
-      }
+  function handleGeocodeSubmit(results, status){
+      if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      let lat = results[0].geometry.location.lat(); 
+      let lng = results[0].geometry.location.lng();
+      let longlat = {lat: lat, lng: lng};
+      let request = {
+        location: longlat ,
+        radius:4000,
+        type: ['museum'],
+        keyword: ['art']};
+      let service = new google.maps.places.PlacesService(map);
+      let mapTitle = results[0].formatted_address;
+      $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`);
+      service.nearbySearch(request, function(results, status){
+        handleSearchResults(results, status);
+      }); 
+    } else {
+      $("#map").hide();
+      $('.listItems').html(``);
+      $('.mapTitle').html(``);
+      //if zipcode is not valid
+      $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);
     }
+  }
 
-  function handleSearchResults(results, status, mapTitle){
+  function handleSearchResults(results, status){
       if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
         const infoWindowsContent = [];
         let infoWindow = new google.maps.InfoWindow();
         $("#map").show();
-        $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`);
         $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
         $('.listItems').html(`<ul>`);
-
         results.forEach(place => {
           let name = `<div class="listName">${place.name}</div>`;
           let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
@@ -66,7 +65,8 @@ function initMap() {
           let content = `${name} ${ratings} ${openingHours}`;
           infoWindowsContent.push(content);
         });
-        createMarkers(results, map);
+        
+        createMarkers(results, map, infoWindow, infoWindowsContent);
 
         $('.listItems').append(`</ul>`);
 
@@ -78,7 +78,7 @@ function initMap() {
       }
   }
 
-  function createMarkers(results, map){
+  function createMarkers(results, map, infoWindow, infoWindowsContent){
       for (let i = 0; i < results.length; i++) {
         let place = results[i];
         let marker = new google.maps.Marker({
