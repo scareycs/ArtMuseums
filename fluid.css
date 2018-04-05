@@ -20,7 +20,8 @@
   clear: both;
 }
 
-.col-6,.col-12 {
+.col-6,
+.col-12 {
 	padding-left: 1.04166666%;
   padding-right: 1.04166666%;
   float:left;
@@ -28,20 +29,13 @@
    /*margin: 0px;*/
 }
 
-
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
 .col-12 {
     width: 100%;
   }
 
-.nextQuestion2{
-	 position: relative;
-    left: 226px;
-    top: 68px;
-}
-
-  .col-6{
+.col-6 {
     width: 50%;
   }
 }

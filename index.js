@@ -1,4 +1,13 @@
 let geocoder;
+const ratingSettings = {
+  max_value: 5,
+  step_size: 0.1,
+  initial_value: 0,
+  selected_symbol_type: 'utf8_star', // Must be a key from symbols
+  cursor: 'default',
+  readonly: true
+}
+
 function initMap() {
   $("#map").hide();
   geocoder = new google.maps.Geocoder();
@@ -51,31 +60,33 @@ function initMap() {
   }
 
   function handleSearchResults(results, status){
-      if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
-        const infoWindowsContent = [];
-        let infoWindow = new google.maps.InfoWindow();
-        $("#map").show();
-        $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
-        $('.listItems').html(`<ul>`);
-        results.forEach(place => {
-          let name = `<div class="listName">${place.name}</div>`;
-          let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
-            `<div class="openNow">Open Now! </div>`: '';
-          let ratings = (place.rating && place.rating !== undefined) ? `Rating: ${place.rating}`:'';
-          let content = `${name} ${ratings} ${openingHours}`;
-          infoWindowsContent.push(content);
-        });
+    
+    if (status == google.maps.places.PlacesServiceStatus.OK) {// if results returned ok
+      const infoWindowsContent = [];
+      let infoWindow = new google.maps.InfoWindow();
+      $("#map").show();
+      $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`);
+      $('.listItems').html(`<ul>`);
+      results.forEach(place => {
+        let name = `<div class="listName">${place.name}</div>`;
+        let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
+          `<div class="openNow">Open Now! </div>`: '';
+        let ratings = (place.rating && place.rating !== undefined) ? `<div class="rating" data-rate-value="${place.rating}"></div>`:'';
+        let content = `${name} ${ratings} ${openingHours}`;
         
-        createMarkers(results, map, infoWindow, infoWindowsContent);
+        infoWindowsContent.push(content);
+      });
 
-        $('.listItems').append(`</ul>`);
+      createMarkers(results, map, infoWindow, infoWindowsContent);
 
-      } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
-        $("#map").hide();
-        $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`);
-        $('.listItems').html(``);
-        $('.mapTitle').html(``);
-      }
+      $('.listItems').append(`</ul>`);
+
+    } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){//if no results in zip code area..
+      $("#map").hide();
+      $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`);
+      $('.listItems').html(``);
+      $('.mapTitle').html(``);
+    }
   }
 
   function createMarkers(results, map, infoWindow, infoWindowsContent){
@@ -90,6 +101,7 @@ function initMap() {
         google.maps.event.addListener(marker,'click', (function(marker){ 
           return function() {
             infoWindow.setContent(infoWindowsContent[i]);
+            $(".rating").rate(ratingSettings);
             infoWindow.open(map,marker);
           }
         })(marker));
@@ -102,9 +114,9 @@ function initMap() {
   {   
     const photoUrl = listItem.photos && listItem.photos.length > 0 && listItem.photos[0].getUrl({maxWidth: 1000});
     const imgNode = (photoUrl === undefined) ? '' : `<img src="${photoUrl}" alt="${listItem.name}">`;
-    const Hours = (listItem.opening_hours && listItem.opening_hours.open_now !== undefined) ?
+    const hours = (listItem.opening_hours && listItem.opening_hours.open_now !== undefined) ?
                 `<div class="openNow">Open Now! </div>`: '';
-    const Ratings = (listItem.rating && listItem.rating !== undefined) ? `Rating: ${listItem.rating}`:'';
+    const ratings = (listItem.rating && listItem.rating !== undefined) ? `<div class="list-rating" data-rate-value="${listItem.rating}"></div> `:'';
     $('.listItems').append(`
       <li>
         <div class="row">
@@ -114,11 +126,12 @@ function initMap() {
               <p> ${listItem.name}</p>
             </div>
             <p>${listItem.vicinity}</p>
-            <p>${Hours}</p>
-            <p>Rating: ${listItem.rating}</p>
+            <p>${hours}</p>
+            <p>${ratings}</p>
           </div>
         </div>
       </li>`
     );
+    $(".list-rating").rate(ratingSettings);
   }
 }
