@@ -34,7 +34,7 @@ function initMap() {
   });
 
   function handleGeocodeSubmit(results, status){
-      if (status == 'OK') {
+    if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
       let lat = results[0].geometry.location.lat(); 
       let lng = results[0].geometry.location.lng();
@@ -133,5 +133,6 @@ function initMap() {
       </li>`
     );
     $(".list-rating").rate(ratingSettings);
+
   }
 }

@@ -97,7 +97,8 @@ li p{
 	font-size: 18px;
 }
 
-.list-rating{
+.list-rating,
+.rating{
 	color: gold;
 }
 
