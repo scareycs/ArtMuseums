@@ -66,8 +66,8 @@ function initMap() {
     } else {
       $("#map").hide(); // If there is an error, the map will not show
       $('.listItems').html(``);// Result items will be emptied
-      $('.mapTitle').html(``); // If zipcode is not valid
-      $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);//error message for non valid zipcodes
+      $('.resultsTitle').html(``); // If zipcode is not valid
+      $('.mapTitle').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);//error message for non valid zipcodes
     }
   }
 
@@ -104,9 +104,9 @@ function initMap() {
       $("#map").hide(); // Map will be hidden
 
       // This error message will appear
-      $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`); 
+      $('.mapTitle').html(`<div class="error">There are no art museums listed in this zip code.</div>`); 
       $('.listItems').html(``);
-      $('.mapTitle').html(``);
+      $('.resultsTitle').html(``); // If zipcode is not valid
     }
   }
 
