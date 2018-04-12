@@ -87,7 +87,7 @@ function initMap() {
       // Content for the infoWindows is set and then pushed to the array infoWindowsContent
       results.forEach(place => {
         let name = `<div class="listName">${place.name}</div>`;
-        let openingHours = (place.opening_hours && place.opening_hours.open_now !== undefined) ?
+        let openingHours = ((place.opening_hours && place.opening_hours.open_now !== undefined) || (place.opening_hours && place.opening_hours.open_now !== false)) ?
           `<div class="openNow">Open Now! </div>`: '';
         let ratings = (place.rating && place.rating !== undefined) ? 
           `<div class="rating" data-rate-value="${place.rating}"></div>`:'';
