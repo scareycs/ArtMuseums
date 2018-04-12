@@ -34,6 +34,7 @@
 			
 			<div class="zipHeading">
 				<form class="zipCodeForm" >
+					<label id="zipCodeForm"></label>
 					<label id="zipLabel"></label>
 					<label for="ZipCode" id="enterLabel">Please Enter Your Zip Code: </label>
 					<input id="zipCode" name="ZipCode" type="text" pattern="[0-9]{5}" placeholder="00000">
@@ -67,7 +68,7 @@
 		</div>
 	</main>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&libraries=places&callback=initMap">
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUjKDslBbyf26RmhvnRA-GT9ChfcS-qOc&libraries=places&callback=initMap" title="map">
 	</script>
 	<script src="index.js"></script>
 	<script src="rater.js"></script>
