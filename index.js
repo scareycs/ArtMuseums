@@ -98,7 +98,7 @@ function initMap() {
 
       createMarkers(results, map, infoWindow, infoWindowsContent);
 
-      $('.listItems').append(`</ul>`);
+      //$('.listItems').append(`</ul>`);
 
     } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){// If no results in zip code area..
       $("#map").hide(); // Map will be hidden
@@ -144,7 +144,7 @@ function initMap() {
                   `<div class="openNow">Open Now! </div>`: '';
     const ratings = (listItem.rating && listItem.rating !== undefined) ? `<div class="list-rating" 
                   data-rate-value="${listItem.rating}"></div> `:'';
-    $('.listItems').append(`
+    $('.listItems ul').append(`
       <li>
         <div class="row">
           <div class="col-6">${imgNode}</div>
