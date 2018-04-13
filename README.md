@@ -7,6 +7,8 @@ Features:
 - See the name and address of each result
 - Be able to search multiple zipcodes without reloading the application
 
+
+
 Screenshots:
 <img src="./Capture2.PNG" alt="initial screen">
 <img src="./Capture.PNG" alt="results page">
