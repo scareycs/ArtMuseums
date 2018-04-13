@@ -9,6 +9,10 @@ This application allows you to check the location of art museums near you. You c
 - See the name and address of each result
 - Be able to search multiple zip codes without reloading the application
 
+<h2>GitHub Page</h2>
+
+https://scareycs.github.io/ArtMuseums/
+
 <h2>Instructions</h2>
 
 1. Clone Repository
