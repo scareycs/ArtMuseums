@@ -1,13 +1,16 @@
-Art Escape
-	This application allows you to check the location of art museums near you. You can take a look at the locations and see whether are not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.
+<h1>Art Escape</h1>
 
-Features:
-- Be able to search Art museums within 4,000 meters of given zipo code
+This application allows you to check the location of art museums near you. You can take a look at the locations and see whether or not the art museums are currently open. You can also get the street address of each museum in your area and check out ratings for the museums to see if the trip is going to be worthwhile.
+
+<h2>Features</h2>
+
+- Be able to search Art museums within 10 km of given zip code
 - Be able to view the ratings of each result
 - See the name and address of each result
-- Be able to search multiple zipcodes without reloading the application
+- Be able to search multiple zip codes without reloading the application
 
-Instructions:
+<h2>Instructions</h2>
+
 1. Clone Repository
 ```
 git clone https://github.com/scareycs/ArtMuseums.git
@@ -24,6 +27,7 @@ http-server
 
 
 
-Screenshots:
+<h2>Screenshots</h2>
+
 <img src="./Capture2.PNG" alt="initial screen">
 <img src="./Capture.PNG" alt="results page">
