@@ -7,6 +7,21 @@ Features:
 - See the name and address of each result
 - Be able to search multiple zipcodes without reloading the application
 
+Instructions:
+1. Clone Repository
+```
+git clone https://github.com/scareycs/ArtMuseums.git
+```
+2. Install dependencies
+```
+npm install
+```
+3. Start web server
+```
+http-server
+```
+4. Go to "http://localhost:8080/" in your browser
+
 
 
 Screenshots:
