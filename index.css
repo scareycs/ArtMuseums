@@ -24,6 +24,9 @@ li p {
 	border: 1px solid #7F397F;
 	border-radius: 9px;
 }
+.listItems ul {
+	padding-left: 0px;
+}
 
 #map {
     width: 100%;
@@ -74,6 +77,8 @@ li p {
 	margin-top: 17px;
 	max-height:480px;
     overflow-y:auto;
+    border: 1px solid #7F397F;
+    box-shadow: 0px 0px 24px #7F397F;
 }
 
 .listName, 

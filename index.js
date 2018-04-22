@@ -10,7 +10,7 @@ const ratingSettings = {
 
 /** Function that prepares map before zipcode and formats it for markers after zip code */
 function initMap() { 
-  $("#map").hide(); 
+  $(".col-6").hide(); 
   geocoder = new google.maps.Geocoder();
   // Gives geocode a generic position before user zipcode input
   let map = new google.maps.Map(document.getElementById('map'), { 
@@ -64,7 +64,7 @@ function initMap() {
         handleSearchResults(results, status);
       }); 
     } else {
-      $("#map").hide(); // If there is an error, the map will not show
+      $(".col-6").hide(); // If there is an error, the map will not show
       $('.listItems').html(``);// Result items will be emptied
       $('.resultsTitle').html(``); // If zipcode is not valid
       $('.mapTitle').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);//error message for non valid zipcodes
@@ -78,7 +78,7 @@ function initMap() {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       const infoWindowsContent = []; // Content array for info window is created
       let infoWindow = new google.maps.InfoWindow(); // Info window for markers is created
-      $("#map").show(); // The map will show
+      $(".col-6").show(); // The map will show
 
       // The title of the results list will show
       $('.resultsTitle').html(`You have <span class="resultNum">${results.length}</span> Results`); 
@@ -101,7 +101,7 @@ function initMap() {
       //$('.listItems').append(`</ul>`);
 
     } else if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS){// If no results in zip code area..
-      $("#map").hide(); // Map will be hidden
+      $(".col-6").hide(); // Map will be hidden
 
       // This error message will appear
       $('.mapTitle').html(`<div class="error">There are no art museums listed in this zip code.</div>`); 
