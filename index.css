@@ -67,6 +67,10 @@ li p {
     margin-right: 5px;
 }
 
+.enterLabel2 {
+	margin-left: 33%;
+}
+
 .mapTitle, 
 .resultsTitle {
 	font-weight: bold;
@@ -126,10 +130,10 @@ li p {
 .listItems {
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 16px;
-
 }
 
-#zipCodeButton {
+.zipCodeButton, 
+.zipCodeButton2 {
 	background: #D992D9;
 	color: black;
 	width: 180px;
@@ -140,7 +144,8 @@ li p {
 	border-radius: 9px;
 }
 
-#zipCodeButton:hover {
+.zipCodeButton:hover, 
+.zipCodeButton2:hover {
 	background: #FFF9FF;
 }
 

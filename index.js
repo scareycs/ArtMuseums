@@ -24,6 +24,8 @@ function initMap() {
 
     // Title along with zipcode submission form will be reformatted
     $(".zipHeading").removeClass("zipHeading").addClass("appTitle2"); 
+    $(".zipCodeButton").removeClass("zipCodeButton").addClass("zipCodeButton2");
+    $("#enterLabel").addClass("enterLabel2");
     $("#zipLabel").addClass("zipLabel").html("Art Escape");
     $("#enterLabel").html("Zip Code");
     let zipCode = $("#zipCode").val();

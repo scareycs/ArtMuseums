@@ -29,6 +29,14 @@
    /*margin: 0px;*/
 }
 
+.zipCodeButton {
+  margin-top: 30px;
+}
+
+.zipCodeButton2 {
+  margin-top: 0px;
+}
+
 /* Non-mobile, grid */
 @media only screen and (min-width: 960px) {
 .col-12 {
@@ -37,5 +45,11 @@
 
 .col-6 {
     width: 50%;
+  }
+}
+
+@media only screen and (max-width: 458px) {
+  #zipCode {
+    margin-top: 33px;
   }
 }
