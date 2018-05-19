@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-size: 1000px 1400px;
+}
+
 .row {
   max-width: 1000px;
   padding-left: 20px;
@@ -37,8 +41,10 @@
   margin-top: 0px;
 }
 
+
+
 /* Non-mobile, grid */
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1032px) {
 .col-12 {
     width: 100%;
   }
@@ -46,10 +52,27 @@
 .col-6 {
     width: 50%;
   }
+
+  html {
+    background-size: 100%;
+  }
 }
+
 
 @media only screen and (max-width: 458px) {
   #zipCode {
     margin-top: 33px;
+  }
+
+  .zipLabel{
+    float:none;
+  }
+
+  #enterLabel {
+    top:40px;
+  }
+
+  #enterLabel2 {
+    margin-left: -55%;
   }
 }
