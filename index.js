@@ -27,7 +27,7 @@ function initMap() {
     $(".zipCodeButton").removeClass("zipCodeButton").addClass("zipCodeButton2");
     $("#enterLabel").addClass("enterLabel2");
     $("#zipLabel").addClass("zipLabel").html(`<span class="art">Art</span> Escape`);
-    $("#enterLabel").html("Zip Code");
+    //$("#enterLabel").html("Zip Code");
     let zipCode = $("#zipCode").val();
     geocoder.geocode({ 
       componentRestrictions: {

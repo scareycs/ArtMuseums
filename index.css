@@ -59,6 +59,10 @@ li p {
 	border-radius: 9px;
 }
 
+#bottomP {
+	margin-bottom: 0px;
+	padding-bottom: 100px
+}
 
 /*.appTitle, 
 .appTitle2 {
@@ -146,33 +150,38 @@ li p {
 	font-size: 18px;
 }
 
-.intro,
-.zipHeading {
+.intro {
 	background: white;
-	border-radius: 9px;
+	border-radius: 9px 9px 0px 0px;
+}
+
+.zipHeading {
+	background: #F2F2F2;
+	border-radius: 0px 0px 9px 9px;
 }
 
 .zipCodeButton, 
 .zipCodeButton2 {
-	/*background: #D9C1D9;*/
-	color: black;
+	border: 1px solid #051012;
+	border-radius: 5px;
+	background: #051012;
+	color: white;
 	width: 80px;
 	height: 34px;
 	font-size: 20px;
-	/*border: 1px solid #7F397F;*/
-	border-radius: 9px;
+	/*border-radius: 9px;*/
 }
 
 .zipCodeButton:hover, 
 .zipCodeButton2:hover {
-	background: #FFF9FF;
+	background: #43CFE8;
+	border-color: #43CFE8;
 }
 
 #zipCode {
-   width: 80px;
+   width: 200px;
    height: 34px;
    font-size: 20px;
-   /*border: 1px solid #7F397F;*/
    border-radius: 5px;
    text-align: right;
    padding: 6px;
