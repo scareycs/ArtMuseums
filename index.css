@@ -14,10 +14,11 @@ li {
 	/*border: 1px solid #7F397F;*/
   	border-radius: 2px;
   	padding:18px;
+  	background: white;
 }
 
 li:hover {
-	background: #D9C1D9;		
+	background: ;		
 }
 
 li p {
@@ -124,11 +125,12 @@ li p {
 
 .listName {
 	font-size: 18px;
+	color:#4DADF7;
 }
 
 .list-rating,
 .rating{
-	color: #613E61;
+	color: #43CFE8;
 }
 
 .intro p, 
