@@ -38,6 +38,8 @@ html {
 }
 
 .zipCodeButton2 {
+  width: 14px;
+  margin-right: 5px;
   margin-top: 0px;
 }
 
@@ -58,10 +60,14 @@ html {
   }
 }
 
+.mapTitle, 
+.resultsTitle {
+  border-radius: 5px;
+}
 
 @media only screen and (max-width: 458px) {
   #zipCode {
-    margin-top: 33px;
+    margin-top: 0px;
   }
 
   .zipLabel{

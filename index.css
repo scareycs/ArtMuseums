@@ -1,7 +1,8 @@
 html{
-	background: url("http://publicdomainarchive.com/wp-content/uploads/2015/03/public-domain-images-free-stock-photos-architecture-black-and-white-building.jpg");
+	background: url("architecture.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
+	color: #495057;
 }
 
 body {
@@ -18,7 +19,7 @@ li {
 }
 
 li:hover {
-	background: ;		
+	/*background: ;*/
 }
 
 li p {
@@ -92,14 +93,28 @@ li p {
 
 .mapTitle, 
 .resultsTitle {
+	background: white;
+	height: 40px;
+	border: 1px solid white;
+	padding-top: 5px;
 	font-weight: bold;
 	font-size: 18px;
 }
+
+.mapTitle {
+	border-radius: 9px 9px 0px 0px;
+}
+
+.resultsTitle {
+	border-radius: 0px 0px 9px 9px;
+}
+
 
 .listItems {
 	margin-top: 17px;
 	max-height:480px;
     overflow-y:auto;
+    background: white;
     /*border: 1px solid #7F397F;*/
     box-shadow: 0px 0px 24px #9EA2A8;
 }
@@ -187,7 +202,10 @@ li p {
    border-radius: 5px;
    text-align: left;
    padding: 6px;
+   padding-left: 10px;
    border-style: none;
+   margin-top: 0px;
+   color: #495057;
 }
 
 .openNow {
@@ -196,6 +214,7 @@ li p {
 
 .zipLabel {
 	float: left;
+	padding-left: 4px;
 }
 
 

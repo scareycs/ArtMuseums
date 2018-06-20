@@ -59,7 +59,7 @@ function initMap() {
       
       // Address is used for the title above the map
       let mapTitle = results[0].formatted_address; 
-      $('.mapTitle').html(`Showing Art Museums in <span class="resultName">${mapTitle}</span>`); 
+      $('.mapTitle').html(`<span class="resultName">${mapTitle}</span>`); 
 
       // Art museum search request is called
       service.nearbySearch(request, function(results, status) {
