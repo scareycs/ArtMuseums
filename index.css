@@ -18,8 +18,18 @@ li {
   	background: white;
 }
 
-li:hover {
-	/*background: ;*/
+li .row{
+	padding-bottom: 20px;
+	margin-top: 0px;
+}
+
+li .row:hover {
+	border-bottom: 4px solid #070f1f;
+	-webkit-transition: border-color 1s ease;
+    -moz-transition: border-color 1s ease;
+    -o-transition: border-color 1s ease;
+    -ms-transition: border-color 1s ease;
+    transition: border-color 1s ease; 
 }
 
 li p {
@@ -49,6 +59,7 @@ li p {
 .resultsTitle, 
 .mapTitle {
 	text-align: center;
+	color: #070f1f;
 }
 
 .appTitle, 
@@ -135,17 +146,17 @@ li p {
 
 .resultName, 
 .resultNum {
-	color: #6E1D6E;
+	color: #070f1f;
 }
 
 .listName {
 	font-size: 18px;
-	color:#4DADF7;
+	color:#070f1f;
 }
 
 .list-rating,
 .rating{
-	color: #43CFE8;
+	color: #070f1f;
 }
 
 .intro p, 
