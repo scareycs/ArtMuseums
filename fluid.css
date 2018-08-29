@@ -47,22 +47,31 @@ html {
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 1032px) {
-.col-12 {
-    width: 100%;
-  }
+  .col-12 {
+      width: 100%;
+    }
 
-.col-6 {
-    width: 50%;
-  }
+  .col-6 {
+      width: 50%;
+    }
 
   html {
-    background-size: 100%;
-  }
-}
+      background-size: 100%;
+    }
 
-.mapTitle, 
-.resultsTitle {
-  border-radius: 5px;
+  .zipCode2 {
+    margin-left: 300px;
+  }
+
+  .mapTitle, 
+  .resultsTitle {
+    border-radius: 5px;
+  }
+
+  .intro p {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
 }
 
 @media only screen and (max-width: 458px) {

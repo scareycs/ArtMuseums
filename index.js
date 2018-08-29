@@ -25,6 +25,7 @@ function initMap() {
     // Title along with zipcode submission form will be reformatted
     $(".zipHeading").removeClass("zipHeading").addClass("appTitle2"); 
     $(".zipCodeButton").removeClass("zipCodeButton").addClass("zipCodeButton2");
+    $("#zipCode").addClass("zipCode2");
     $("#enterLabel").addClass("enterLabel2");
     $("#zipLabel").addClass("zipLabel").html(`<span class="art">Art</span> Escape`);
     //$("#enterLabel").html("Zip Code");
@@ -44,6 +45,7 @@ function initMap() {
   google keyword in museum type */
   function handleGeocodeSubmit(results, status) {
     if (status == 'OK') {
+      $("main").removeClass("error");
       map.setCenter(results[0].geometry.location); // Map center will be rearranges
       let lat = results[0].geometry.location.lat(); // Long and lat are set
       let lng = results[0].geometry.location.lng();
@@ -69,7 +71,7 @@ function initMap() {
       $(".col-6").hide(); // If there is an error, the map will not show
       $('.listItems').html(``);// Result items will be emptied
       $('.resultsTitle').html(``); // If zipcode is not valid
-      $('.mapTitle').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);//error message for non valid zipcodes
+      $('main').html(`<div class="error">Not a valid zipcode. Be sure to enter a valid zipcode.</div>`);//error message for non valid zipcodes
     }
   }
 
@@ -78,6 +80,7 @@ function initMap() {
 
     // If results returned ok
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+      $("main").removeClass("error");
       const infoWindowsContent = []; // Content array for info window is created
       let infoWindow = new google.maps.InfoWindow(); // Info window for markers is created
       $(".col-6").show(); // The map will show
@@ -106,7 +109,7 @@ function initMap() {
       $(".col-6").hide(); // Map will be hidden
 
       // This error message will appear
-      $('.mapTitle').html(`<div class="error">There are no art museums listed in this zip code.</div>`); 
+      $('main').html(`<div class="error">There are no art museums listed in this zip code.</div>`); 
       $('.listItems').html(``);
       $('.resultsTitle').html(``); // If zipcode is not valid
     }

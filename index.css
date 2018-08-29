@@ -15,15 +15,17 @@ li {
 	/*border: 1px solid #7F397F;*/
   	border-radius: 2px;
   	padding:18px;
+  	padding: 0px;
   	background: white;
 }
 
-li .row{
-	padding-bottom: 20px;
-	margin-top: 0px;
+li .row {
+	padding: 20px;
+	margin: 0px;
 }
 
 li .row:hover {
+	background: #E5FFFF;
 	border-bottom: 4px solid #070f1f;
 	-webkit-transition: border-color 1s ease;
     -moz-transition: border-color 1s ease;
@@ -44,6 +46,7 @@ li p {
 	border-radius: 9px;
 }
 .listItems ul {
+	margin-top: 0px;
 	padding-left: 0px;
 }
 
@@ -74,7 +77,7 @@ li p {
 
 #bottomP {
 	margin-bottom: 0px;
-	padding-bottom: 100px
+	padding-bottom: 40px;
 }
 
 /*.appTitle, 
@@ -159,7 +162,12 @@ li p {
 	color: #070f1f;
 }
 
-.intro p, 
+.intro p {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+ 
 .zipHeading, 
 .appTitle,
 .appTitle2,
@@ -169,7 +177,11 @@ li p {
 }
 
 .error {
+	background: white;
+	border-radius: 9px 9px 0px 0px;
 	font-size: 18px;
+	padding-left: 1.04166666%;
+  	padding-right: 1.04166666%;
 }
 
 .intro p, 
@@ -188,23 +200,27 @@ li p {
 	border-radius: 0px 0px 9px 9px;
 }
 
+.zipCodeButton {
+	
+	border-radius: 5px;
+	width: 80px;
+}
+
 .zipCodeButton, 
 .zipCodeButton2 {
 	border: 1px solid #051012;
-	border-radius: 5px;
 	background: #051012;
 	color: white;
-	width: 80px;
 	height: 34px;
 	font-size: 20px;
 	/*border-radius: 9px;*/
 }
 
-.zipCodeButton:hover, 
-.zipCodeButton2:hover {
+.zipCodeButton:hover {
 	background: #43CFE8;
 	border-color: #43CFE8;
 }
+
 
 #zipCode {
    width: 200px;
@@ -216,7 +232,7 @@ li p {
    padding-left: 10px;
    border-style: none;
    margin-top: 0px;
-   color: #495057;
+   color: #495057
 }
 
 .openNow {
