@@ -8,8 +8,6 @@ html {
 
 .row {
   max-width: 1000px;
-  padding-left: 20px;
-  padding-right: 20px;
   margin: 20px auto;
 }
 
@@ -47,17 +45,21 @@ html {
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 1032px) {
+  .row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .col-12 {
-      width: 100%;
-    }
+    width: 100%;
+  }
 
   .col-6 {
-      width: 50%;
-    }
+    width: 50%;
+  }
 
   html {
-      background-size: 100%;
-    }
+    background-size: 100%;
+  }
 
   .zipCode2 {
     margin-left: 300px;

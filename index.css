@@ -1,5 +1,5 @@
 html{
-	background: url("architecture.jpg");
+	background: url("artgallery.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	color: #495057;
@@ -160,6 +160,12 @@ li p {
 .list-rating,
 .rating{
 	color: #070f1f;
+}
+
+.intro {
+	background: url("artgallery.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .intro p {
