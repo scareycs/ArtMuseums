@@ -33,5 +33,5 @@ http-server
 
 <h2>Screenshots</h2>
 
-<img src="./Capture2.PNG" alt="initial screen">
-<img src="./Capture.PNG" alt="results page">
+<img src="./Capture.PNG" alt="initial screen">
+<img src="./Capture4.PNG" alt="results page">
